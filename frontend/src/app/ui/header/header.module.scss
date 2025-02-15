@@ -25,6 +25,7 @@
 }
 
 .wrapperNavbar {
+    @include regular-lb;
     ul {
         display: flex;
         justify-content: space-between;
@@ -53,10 +54,6 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    input {
-        width: 30%;
-        height: 1.5rem;
-    }
     button {
         width: 3.5rem;
         height: 3.5rem;
@@ -82,5 +79,50 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: .6rem;
+    .profileButton, .loginButton {
+        @include regular-lb;
+        padding: .5rem 1rem;
+
+        background: var(--button-primary);
+        border: none;
+        border-radius: 5px;
+
+        color: white;
+
+        cursor: pointer;
+
+        transition: .5s;
+    }
+    .profileButton:hover, .loginButton:hover {
+        background: var(--button-hover-primary);
+        transform: scale(1.05);
+    }
+
+    .cartIcon, .logoutIcon {
+        color: var(--button-primary);
+    }
+
+    .cartIcon:hover, .logoutIcon:hover {
+        color: var(--button-hover-primary);
+    }
+
+    .registerButton {
+        @include regular-lb;
+        padding: .5rem 1rem;
+
+        background: transparent;
+        border: 2px solid var(--button-primary);
+        border-radius: 5px;
+
+        color: var(--button-primary);
+
+        cursor: pointer;
+
+        transition: .5s;
+    }
+    .registerButton:hover {
+        background: #dfdfdf;
+        transform: scale(1.05);
+    }
 }

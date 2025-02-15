@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${montserrat.variable}`}>
-        <Header loggedIn={true} />
+        <Header loggedIn={false} />
         {children}
       </body>
     </html>
