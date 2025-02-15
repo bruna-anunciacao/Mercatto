@@ -1,0 +1,99 @@
+/*Font Mixins*/
+
+@mixin regular-lb{
+    font-size: var(--font-size-lb);
+    line-height: var(--font-line-height-lb);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin regular-h6{
+    font-size: var(--font-size-h6);
+    line-height: var(--font-line-height-h6);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin regular-h5{
+    font-size: var(--font-size-h5);
+    line-height: var(--font-line-height-h5);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin regular-h4{
+    font-size: var(--font-size-h4);
+    line-height: var(--font-line-height-h4);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin regular-h3{
+    font-size: var(--font-size-h3);
+    line-height: var(--font-line-height-h3);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin regular-h2{
+    font-size: var(--font-size-h2);
+    line-height: var(--font-line-height-h2);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin regular-h1{
+    font-size: var(--font-size-h1);
+    line-height: var(--font-line-height-h1);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-lb{
+    font-size: var(--font-size-lb);
+    line-height: var(--font-line-height-lb);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-h6{
+    font-size: var(--font-size-h6);
+    line-height: var(--font-line-height-h6);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-h5{
+    font-size: var(--font-size-h5);
+    line-height: var(--font-line-height-h5);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-h4{
+    font-size: var(--font-size-h4);
+    line-height: var(--font-line-height-h4);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-h3{
+    font-size: var(--font-size-h3);
+    line-height: var(--font-line-height-h3);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-h2{
+    font-size: var(--font-size-h2);
+    line-height: var(--font-line-height-h2);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}
+
+@mixin bold-h1{
+    font-size: var(--font-size-h1);
+    line-height: var(--font-line-height-h1);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-monterrat);
+}

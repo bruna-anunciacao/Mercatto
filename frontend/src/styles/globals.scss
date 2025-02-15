@@ -1,0 +1,277 @@
+@import "./mixins.scss";
+
+:root {
+  /* Fonts */
+  --font-size-lb: 0.875rem;
+  --font-size-h6: 1.125rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h3: 1.875rem;
+  --font-size-h2: 2.5rem;
+  --font-size-h1: 3.75rem;
+
+  /*Font Line Height*/
+  --font-line-height-lb: 1.365rem;
+  --font-line-height-h6: 1.755rem;
+  --font-line-height-h5: 1.95rem;
+  --font-line-height-h4: 2.34rem;
+  --font-line-height-h3: 2.925rem;
+  --font-line-height-h2: 3.9rem;
+  --font-line-height-h1: 5.849rem;
+
+  /*Font Weights*/
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+
+  /*Font Family*/
+  --font-family-monterrat: "Montserrat", sans-serif;
+
+  /*Colors*/
+  --primary-color: #ff6b00;
+  --secondary-color: #4caf50;
+  --action-color: #ffd700;
+  --background-color: #fafafa;
+  --text-color: #333333;
+  --border-light-color: #cccccc;
+
+    /* Buttons */
+    --button-primary: #ff6b00;
+    --button-secondary: #4caf50;
+    --button-hover-primary: #cd5600;
+    --button-hover-secondary: #3d8f3d;
+  /*Success*/
+  --success-50: #edfaf2;
+  --success-100: #c7f0d7;
+  --success-200: #abe9c3;
+  --success-300: #85e9c3;
+  --success-400: #6dd997;
+  --success-500: #39d07d;
+  --success-600: #42bd72;
+  --success-700: #349459;
+  --success-800: #287245;
+  --success-900: #1f5735;
+  /*Warning*/
+  --warning-50: #fef6ee;
+  --warning-100: #fce3c9;
+  --warning-200: #fad6af;
+  --warning-300: #f8c38a;
+  --warning-400: #f7b773;
+  --warning-500: #f5a550;
+  --warning-600: #df9649;
+  --warning-700: #ae7539;
+  --warning-800: #875b2c;
+  --warning-900: #674522;
+  /*Danger*/
+  --danger-50: #f7ebeb;
+  --danger-100: #e7c0c0;
+  --danger-200: #dca2a2;
+  --danger-300: #cc7777;
+  --danger-400: #c25d5d;
+  --danger-500: #b33434;
+  --danger-600: #a32f2f;
+  --danger-700: #7f2525;
+  --danger-800: #621d1d;
+  --danger-900: #4b1616;
+  /*Neutrals*/
+  --neutral-50: #ebebec;
+  --neutral-100: #c0c1c4;
+  --neutral-200: #a2a3a8;
+  --neutral-300: #777a80;
+  --neutral-400: #5d6067;
+  --neutral-500: #343841;
+  --neutral-600: #2f333b;
+  --neutral-700: #25282e;
+  --neutral-800: #1d1f24;
+  --neutral-900: #16181b;
+
+  /*Spacings*/
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-250: 1.25rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-800: 4rem;
+  --spacing-1000: 5rem;
+
+  /*Widths and Sizes*/
+  --max-width: 1400px;
+  --page-wrapper: 90%;
+  --padding-wrap: 4rem 0rem;
+
+  @media screen and (max-width: 1280px) {
+    --padding-wrap: 3rem 0rem;
+  }
+  @media screen and (max-width: 768px) {
+    --padding-wrap: 2rem 0rem;
+  }
+}
+
+/* RESETS */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: none;
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: textfield; /* Add the standard property 'appearance' */
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/*Prime React Dropdown*/
+.p-dropdown-panel {
+  padding: 15px;
+  margin-top: -10px;
+  background-color: var(--secondary-900);
+  border-top: 0px !important;
+  border: 1px solid var(--primary-500);
+  border-radius: 0px 0px 0px 13px;
+}
+
+/*Field*/
+.field {
+  @include regular-lb;
+  width: 100%;
+  height: 3rem;
+  padding: var(--spacing-100);
+
+  border: 1px solid var(--primary-color);
+  border-radius: 0.35rem;
+  background: var(--secondary-color);
+
+  color: var(--secondary-900);
+
+  &::placeholder {
+    color: var(--secondary-900);
+
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.fieldDropdownError {
+  @include regular-lb;
+  width: 100%;
+  height: 3rem;
+  padding: var(--spacing-100);
+
+  border: 1px solid var(--danger-500) !important;
+  border-radius: 0.35rem;
+  background: var(--secondary-color);
+
+  color: var(--danger-500);
+
+  &::placeholder {
+    color: var(--danger-500);
+
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.fieldError {
+  @include regular-lb;
+
+  border: 1px solid var(--danger-500) !important;
+  background: var(--secondary-color);
+
+  color: var(--danger-500) !important;
+
+  &::placeholder {
+    color: var(--danger-500) !important;
+
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.error {
+  @include regular-lb;
+  color: var(--danger-500) !important;
+  position: absolute;
+}
+
+.fieldTextArea {
+  @extend .field;
+  height: 4.375rem !important;
+}
+
+.fieldTextAreaError {
+  @extend .fieldError;
+  height: 4.375rem !important;
+}
+
+/* Scrollbar Custom */
+/* the main scrollbar don't have access to theme colors, so i put neutral colors. */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #dfe9eb;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #b8c0c2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #434343;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #2e2e2e;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #222222;
+}
