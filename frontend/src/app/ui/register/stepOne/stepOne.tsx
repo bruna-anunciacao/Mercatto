@@ -16,10 +16,10 @@ import s from "./stepOne.module.scss";
 
 type StepOneProps = {
   step: React.Dispatch<React.SetStateAction<number>>;
-  data: React.Dispatch<React.SetStateAction<DataType[]>>;
+  setData: React.Dispatch<React.SetStateAction<DataType>>;
 };
 
-export default function StepOne({ step, data }: StepOneProps) {
+export default function StepOne({ step, setData }: StepOneProps) {
   const validationSchema = yup.object({
     fullName: yup.string().required("Nome é obrigatório"),
     email: yup.string().email("Email inválido").required("Email é obrigatório"),
@@ -52,7 +52,7 @@ export default function StepOne({ step, data }: StepOneProps) {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      data([{
+      const data = {
         fullName: values.fullName,
         email: values.email,
         phone: values.phone.replace(/\D/g, ""),
@@ -60,7 +60,8 @@ export default function StepOne({ step, data }: StepOneProps) {
         birthDate: values.birthDate,
         password: values.password,
         confirmPassword: values.confirmPassword,
-      }])
+      }
+      setData(data)
       step(1);
     },
   });

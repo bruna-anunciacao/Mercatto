@@ -8,14 +8,18 @@ import StepOne from "../ui/register/stepOne/stepOne";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DataType } from "@/helpers/types";
 // Styles
 import s from "./page.module.scss";
 
 export default function Page() {
   const [stepForm, setStepForm] = useState(0);
-  const [firstData, setFirstData] = useState<DataType[]>([]);
+  const [firstData, setFirstData] = useState<DataType>({} as DataType);
+
+  useEffect(() => {
+    console.log(firstData);
+  }, [firstData]);
   return (
     <section className={s.wrapperRegister}>
       <Image
@@ -28,7 +32,7 @@ export default function Page() {
       <h1>CRIAR CONTA</h1>
       <RegisterStepForm stepForm={stepForm} />
       <div className={s.wrapperRegisterForm}>
-        {stepForm === 0 && <StepOne step={setStepForm} data={setFirstData}/>}
+        {stepForm === 0 && <StepOne step={setStepForm} setData={setFirstData}/>}
       </div>
     </section>
   );
