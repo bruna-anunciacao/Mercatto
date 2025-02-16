@@ -1,9 +1,10 @@
 // Components
-import Header from "./ui/header/header";
+
 // Imports
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { PrimeReactProvider } from "primereact/provider";
+import { PrimeReactProvider } from 'primereact/api';
+import { Toaster } from "react-hot-toast";
 // Styles
 import "../styles/globals.scss";
 
@@ -26,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${montserrat.variable}`}>
-        <PrimeReactProvider value={{ unstyled: true }}>
+        <PrimeReactProvider >
+          <Toaster />
           {children}
         </PrimeReactProvider>
       </body>

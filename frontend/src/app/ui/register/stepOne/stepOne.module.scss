@@ -1,0 +1,57 @@
+@use "../../../../styles/mixins" as *;
+
+.wrapperForm {
+    @include regular-h6;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    .wrapperTwoFields {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .wrapperButton {
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        button {
+            @include regular-lb;
+            width: 10rem;
+            height: 3rem;
+            padding: var(--spacing-100);
+
+            border: none;
+            border-radius: 0.35rem;
+            background: var(--button-primary);
+            color: white;
+
+            outline: none;
+            transition: .5s;
+            &:hover {
+                background: var(--button-hover-primary);
+            }
+        }
+    }
+    .wrapperFooter {
+        @include regular-h6;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        span {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: .5s;
+            &:hover {
+                color: var(--primary-hover-color);
+            }
+        }
+    }
+}

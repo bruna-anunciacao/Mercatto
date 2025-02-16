@@ -2,16 +2,21 @@
 // Components
 
 // Images
-import { Search, Person, ShoppingCart, Login, Logout } from "@mui/icons-material";
+import {
+  Search,
+  Person,
+  ShoppingCart,
+  Login,
+  Logout,
+} from "@mui/icons-material";
 // Imports
 import Image from "next/image";
 import { Button, IconButton } from "@mui/material";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation'
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { InputText } from "primereact/inputtext";
 // Styles
 import s from "./header.module.scss";
-
 
 export default function Header({ loggedIn }: { loggedIn: boolean }) {
   const router = useRouter();
@@ -43,7 +48,7 @@ export default function Header({ loggedIn }: { loggedIn: boolean }) {
         </ul>
       </nav>
       <div className={s.searchBar}>
-        <InputText 
+        <InputText
           id="searchBar"
           name="searchBar"
           placeholder="Buscar produtos"
@@ -56,14 +61,29 @@ export default function Header({ loggedIn }: { loggedIn: boolean }) {
       <div className={s.wrapperButtons}>
         {loggedIn ? (
           <>
-            <Button startIcon={<Person />} className={s.profileButton}>Perfil</Button>
-            <IconButton className={s.cartIcon} size="large"><ShoppingCart fontSize="large"/></IconButton>
-            <IconButton className={s.logoutIcon} size="large"><Logout fontSize="large"/></IconButton>
+            <Button startIcon={<Person />} className={s.profileButton}>
+              Perfil
+            </Button>
+            <IconButton className={s.cartIcon} size="large">
+              <ShoppingCart fontSize="large" />
+            </IconButton>
+            <IconButton className={s.logoutIcon} size="large">
+              <Logout fontSize="large" />
+            </IconButton>
           </>
         ) : (
           <>
-            <Button startIcon={<Person />} type="button" onClick={() => router.push('/register')} className={s.registerButton}>Criar Conta</Button>
-            <Button startIcon={<Login />} className={s.loginButton}>Login</Button>
+            <Button
+              startIcon={<Person />}
+              type="button"
+              onClick={() => router.push("/register")}
+              className={s.registerButton}
+            >
+              Criar Conta
+            </Button>
+            <Button startIcon={<Login />} className={s.loginButton}>
+              Login
+            </Button>
           </>
         )}
       </div>
