@@ -1,8 +1,11 @@
 import styles from "./page.module.scss";
+import Header from "./ui/header/header";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-    </div>
+    <section className={styles.page}>
+      <Header loggedIn={false} />
+      Inicio
+    </section>
   );
 }

@@ -14,6 +14,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Mercatto",
   description: "Mercatto is a marketplace for buying and selling goods.",
+  icons: "/mercatto-logo.png",
 };
 
 export default function RootLayout({
@@ -24,7 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${montserrat.variable}`}>
-        <Header loggedIn={false} />
         {children}
       </body>
     </html>

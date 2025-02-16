@@ -8,56 +8,64 @@ import Image from "next/image";
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { Button, IconButton } from "@mui/material";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation'
 // Styles
 import s from "./header.module.scss";
+import { Theme }from "../../../styles/globals";
+
+
+const theme = Theme();
 
 const CssTextField = styled(TextField)({
   '& label': {
-    color: '#ff6b00',
+    color: theme.primary,
   },
   '& label.Mui-focused': {
-    color: '#ff6b00',
+    color: theme.primary,
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: '#ff6b00',
+    borderBottomColor: theme.primary,
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#ff6b00',
+      borderColor: theme.primary,
     },
     '&:hover fieldset': {
-      borderColor: '#ff6b00',
+      borderColor: theme.primary,
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#ff6b00',
+      borderColor: theme.primary,
     },
   },
 });
 
 export default function Header({ loggedIn }: { loggedIn: boolean }) {
+  const router = useRouter();
   return (
-    <main className={s.wrapperHeader}>
+    <section className={s.wrapperHeader}>
       <a href="/" className={s.logo}>
         <Image
           src="/mercatto-logo.png"
           alt="Mercatto Logo"
           width={150}
           height={150}
+          priority
         />
       </a>
       <nav className={s.wrapperNavbar}>
         <ul>
           <li>
-            <a href="#">Início</a>
+            <Link href="/">Início</Link>
           </li>
           <li>
-            <a href="#">Sobre nós</a>
+            <Link href="#">Sobre nós</Link>
           </li>
           <li>
-            <a href="#">Contato</a>
+            <Link href="#">Contato</Link>
           </li>
           <li>
-            <a href="#">Ajuda/FAQ</a>
+            <Link href="#">Ajuda/FAQ</Link>
           </li>
         </ul>
       </nav>
@@ -81,11 +89,11 @@ export default function Header({ loggedIn }: { loggedIn: boolean }) {
           </>
         ) : (
           <>
-            <Button startIcon={<Person />} className={s.registerButton}>Criar Conta</Button>
+            <Button startIcon={<Person />} type="button" onClick={() => router.push('/register')} className={s.registerButton}>Criar Conta</Button>
             <Button startIcon={<Login />} className={s.loginButton}>Login</Button>
           </>
         )}
       </div>
-    </main>
+    </section>
   );
 }
