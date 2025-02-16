@@ -2,7 +2,8 @@
 import Header from "./ui/header/header";
 // Imports
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google"
+import { Montserrat } from "next/font/google";
+import { PrimeReactProvider } from "primereact/provider";
 // Styles
 import "../styles/globals.scss";
 
@@ -25,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${montserrat.variable}`}>
-        {children}
+        <PrimeReactProvider value={{ unstyled: true }}>
+          {children}
+        </PrimeReactProvider>
       </body>
     </html>
   );

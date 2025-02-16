@@ -1,128 +1,151 @@
-@import "../../../styles/mixins.scss";
+@use "../../../styles/mixins" as *;
 
 .wrapperHeader {
-    width: 100%;
-    padding: 1rem 1rem;
+  width: 100%;
+  padding: 1rem 1rem;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    border-top: 1rem solid var(--primary-color);
-    border-bottom: 1rem solid var(--primary-color);
+  border-top: 1rem solid var(--primary-color);
+  border-bottom: 1rem solid var(--primary-color);
 
-    background: var(--background-color) ;
+  background: var(--background-color);
 
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .logo {
-    transition: .5s;
+  transition: 0.5s;
 }
 
 .logo:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .wrapperNavbar {
-    @include regular-lb;
-    ul {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 2rem;
-        
-        list-style: none;
-        li {
-            a {
-                color: var(--text-color);
-                font-size: 1.2rem;
-                font-weight: 500;
-                text-decoration: none;
+  @include regular-lb;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
 
-                transition: .5s;   
-            }
-            a:hover {
-                color: var(--primary-color);
-            }
-        }
+    list-style: none;
+    li {
+      a {
+        color: var(--text-color);
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-decoration: none;
+
+        transition: 0.5s;
+      }
+      a:hover {
+        color: var(--primary-color);
+      }
     }
+  }
 }
 
 .searchBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    button {
-        width: 3.5rem;
-        height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  .searchInput {
+    @include regular-lb;
+    width: 20rem;
+    height: 3.5rem;
 
-        background: var(--button-primary);
-        border: none;
-        border-radius: 5px;
-        
-        color: white;
+    padding: 0 1rem;
 
-        cursor: pointer;
-        
-        transition: .5s;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+
+    color: var(--text-color);
+
+    transition: 0.5s;
+    &::placeholder {
+      color: var(--text-color);
     }
-
-    button:hover {
-        background: var(--button-hover-primary);
-        transform: scale(1.1);
+    &:focus {
+      border: 2px solid var(--primary-color);
+      outline: none;
     }
+  }
+  button {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    background: var(--button-primary);
+    border: none;
+    border-radius: 5px;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.5s;
+    &:hover {
+      background: var(--button-hover-primary);
+      transform: scale(1.1);
+    }
+  }
 }
 
 .wrapperButtons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .6rem;
-    .profileButton, .loginButton {
-        @include regular-lb;
-        padding: .5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  .profileButton,
+  .loginButton {
+    @include regular-lb;
+    padding: 0.5rem 1rem;
 
-        background: var(--button-primary);
-        border: none;
-        border-radius: 5px;
+    background: var(--button-primary);
+    border: none;
+    border-radius: 5px;
 
-        color: white;
+    color: white;
 
-        cursor: pointer;
+    cursor: pointer;
 
-        transition: .5s;
+    transition: 0.5s;
+    &:hover {
+      background: var(--button-hover-primary);
+      transform: scale(1.05);
     }
-    .profileButton:hover, .loginButton:hover {
-        background: var(--button-hover-primary);
-        transform: scale(1.05);
+  }
+
+  .cartIcon,
+  .logoutIcon {
+    color: var(--button-primary);
+  }
+
+  .cartIcon:hover,
+  .logoutIcon:hover {
+    color: var(--button-hover-primary);
+  }
+
+  .registerButton {
+    @include regular-lb;
+    padding: 0.5rem 1rem;
+
+    background: transparent;
+    border: 2px solid var(--button-primary);
+    border-radius: 5px;
+
+    color: var(--button-primary);
+
+    cursor: pointer;
+
+    transition: 0.5s;
+    &:hover {
+      background: #dfdfdf;
+      transform: scale(1.05);
     }
-
-    .cartIcon, .logoutIcon {
-        color: var(--button-primary);
-    }
-
-    .cartIcon:hover, .logoutIcon:hover {
-        color: var(--button-hover-primary);
-    }
-
-    .registerButton {
-        @include regular-lb;
-        padding: .5rem 1rem;
-
-        background: transparent;
-        border: 2px solid var(--button-primary);
-        border-radius: 5px;
-
-        color: var(--button-primary);
-
-        cursor: pointer;
-
-        transition: .5s;
-    }
-    .registerButton:hover {
-        background: #dfdfdf;
-        transform: scale(1.05);
-    }
+  }
 }

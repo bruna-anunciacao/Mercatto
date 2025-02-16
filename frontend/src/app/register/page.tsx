@@ -1,15 +1,13 @@
 "use client";
 // Components
 import RegisterStepForm from "../ui/register/step/registerStepForm";
+import StepOne from "../ui/register/stepOne/stepOne";
 // Images
 
 // Imports
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import * as yup from "yup";
-import { useFormik } from "formik";
-import TextField from "@mui/material/TextField";
 import { useState } from "react";
 // Styles
 import s from "./page.module.scss";
@@ -21,12 +19,15 @@ export default function Page() {
       <Image
         src="/mercatto-logo.png"
         alt="Mercatto Logo"
-        width={200}
-        height={200}
+        width={150}
+        height={150}
         priority
       />
+      <h1>CRIAR CONTA</h1>
       <RegisterStepForm stepForm={stepForm} />
-      <div className={s.wrapperRegisterForm}></div>
+      <div className={s.wrapperRegisterForm}>
+        {stepForm === 0 && <StepOne />}
+      </div>
     </section>
   );
 }

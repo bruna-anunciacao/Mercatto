@@ -5,40 +5,13 @@
 import { Search, Person, ShoppingCart, Login, Logout } from "@mui/icons-material";
 // Imports
 import Image from "next/image";
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
 import { Button, IconButton } from "@mui/material";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'
+import { InputText } from "primereact/inputtext";
 // Styles
 import s from "./header.module.scss";
-import { Theme }from "../../../styles/globals";
 
-
-const theme = Theme();
-
-const CssTextField = styled(TextField)({
-  '& label': {
-    color: theme.primary,
-  },
-  '& label.Mui-focused': {
-    color: theme.primary,
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: theme.primary,
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: theme.primary,
-    },
-    '&:hover fieldset': {
-      borderColor: theme.primary,
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: theme.primary,
-    },
-  },
-});
 
 export default function Header({ loggedIn }: { loggedIn: boolean }) {
   const router = useRouter();
@@ -70,11 +43,11 @@ export default function Header({ loggedIn }: { loggedIn: boolean }) {
         </ul>
       </nav>
       <div className={s.searchBar}>
-        <CssTextField
+        <InputText 
           id="searchBar"
-          label="Buscar produtos"
-          variant="outlined"
-          type="search"
+          name="searchBar"
+          placeholder="Buscar produtos"
+          className={s.searchInput}
         />
         <button type="button">
           <Search sx={{ color: "#fff" }} />
