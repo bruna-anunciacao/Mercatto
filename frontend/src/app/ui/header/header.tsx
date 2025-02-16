@@ -2,7 +2,7 @@
 // Components
 
 // Images
-import { Search, Person, ShoppingCart } from "@mui/icons-material";
+import { Search, Person, ShoppingCart, Login, Logout } from "@mui/icons-material";
 // Imports
 import Image from "next/image";
 import TextField from '@mui/material/TextField';
@@ -75,13 +75,14 @@ export default function Header({ loggedIn }: { loggedIn: boolean }) {
       <div className={s.wrapperButtons}>
         {loggedIn ? (
           <>
-            <Button variant="outlined" startIcon={<Person />}>Perfil</Button>
-            <IconButton><ShoppingCart /></IconButton>
+            <Button startIcon={<Person />} className={s.profileButton}>Perfil</Button>
+            <IconButton className={s.cartIcon} size="large"><ShoppingCart fontSize="large"/></IconButton>
+            <IconButton className={s.logoutIcon} size="large"><Logout fontSize="large"/></IconButton>
           </>
         ) : (
           <>
-            <button>Cadastro</button>
-            <button>Login</button>
+            <Button startIcon={<Person />} className={s.registerButton}>Criar Conta</Button>
+            <Button startIcon={<Login />} className={s.loginButton}>Login</Button>
           </>
         )}
       </div>
