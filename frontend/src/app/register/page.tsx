@@ -6,7 +6,6 @@ import StepTwo from "../ui/register/stepTwo/stepTwo";
 // Images
 
 // Imports
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
