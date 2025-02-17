@@ -10,16 +10,21 @@ import { InputMask } from "primereact/inputmask";
 import { Password } from "primereact/password";
 import { Button } from "@mui/material";
 import Link from "next/link";
-import { DataType } from "@/helpers/types";
+import { RegisterStepOne } from "@/helpers/types";
+import { parse, isValid, subYears } from "date-fns";
+import { useEffect } from "react";
 // Styles
 import s from "./stepOne.module.scss";
 
 type StepOneProps = {
   step: React.Dispatch<React.SetStateAction<number>>;
-  setData: React.Dispatch<React.SetStateAction<DataType>>;
+  setData: React.Dispatch<React.SetStateAction<RegisterStepOne>>;
+  data: RegisterStepOne;
 };
 
-export default function StepOne({ step, setData }: StepOneProps) {
+export default function StepOne({ step, setData, data }: StepOneProps) {
+  const today = new Date();
+  const minAge = 18;
   const validationSchema = yup.object({
     fullName: yup.string().required("Nome é obrigatório"),
     email: yup.string().email("Email inválido").required("Email é obrigatório"),
@@ -33,7 +38,19 @@ export default function StepOne({ step, setData }: StepOneProps) {
       )
       .matches(/^\S*$/, "A senha não pode conter espaços")
       .required("Senha é obrigatória"),
-    birthDate: yup.string().required("Data de nascimento é obrigatória"),
+    birthDate: yup
+      .string()
+      .required("Data de nascimento é obrigatória")
+      .test("valid-date", "Data inválida", (value) => {
+        if (!value) return false;
+        const parsedDate = parse(value, "yyyy-MM-dd", new Date());
+        return isValid(parsedDate);
+      })
+      .test("age-limit", `Você deve ter pelo menos ${minAge} anos`, (value) => {
+        if (!value) return false;
+        const parsedDate = parse(value, "yyyy-MM-dd", new Date());
+        return isValid(parsedDate) && parsedDate <= subYears(today, minAge);
+      }),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref("password"), undefined], "As senhas não coincidem")
@@ -60,8 +77,8 @@ export default function StepOne({ step, setData }: StepOneProps) {
         birthDate: values.birthDate,
         password: values.password,
         confirmPassword: values.confirmPassword,
-      }
-      setData(data)
+      };
+      setData(data);
       step(1);
     },
   });
@@ -87,8 +104,24 @@ export default function StepOne({ step, setData }: StepOneProps) {
       </div>
     );
   };
+
+  useEffect(() => {
+    if (data && Object.keys(data).length > 0) {
+      formik.setFieldValue("fullName", data.fullName);
+      formik.setFieldValue("email", data.email);
+      formik.setFieldValue("phone", data.phone);
+      formik.setFieldValue(
+        "cpf",
+        data.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+      );
+      formik.setFieldValue("birthDate", data.birthDate);
+      formik.setFieldValue("password", data.password);
+      formik.setFieldValue("confirmPassword", data.confirmPassword);
+    }
+  }, []);
   return (
     <form onSubmit={formik.handleSubmit} className={s.wrapperForm}>
+      <h2>Dados Pessoais</h2>
       <label>
         <span>Nome completo</span>
         <InputText

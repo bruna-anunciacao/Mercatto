@@ -7,28 +7,45 @@
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    h2 {
-        @include regular-lb;
-
-        font-size: 1.8rem;
-        font-weight: 500;
-        text-align: center;
-        color: var(--primary-color);
-    }
-    .wrapperTwoFields {
+    .wrapperZipFields {
         width: 100%;
 
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr .8fr 1fr;
         gap: 1rem;
     }
+    .wrapperThreeFields {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1.5fr .8fr;
+        gap: 1rem;
+    }
+
     .wrapperButton {
         width: 100%;
 
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         gap: 1rem;
-        button {
+        .backButton {
+            @include regular-lb;
+            width: 10rem;
+            height: 3rem;
+            padding: var(--spacing-100);
+
+            border: 2px solid var(--button-primary);
+            border-radius: 0.35rem;
+            background: transparent;
+            color: var(--button-primary);
+
+            outline: none;
+            transition: .5s;
+            &:hover {
+                background: var(--button-hover-transparent);
+            }
+        }
+        .submitButton {
             @include regular-lb;
             width: 10rem;
             height: 3rem;
@@ -36,13 +53,13 @@
 
             border: none;
             border-radius: 0.35rem;
-            background: var(--button-primary);
+            background: var(--button-secondary);
             color: white;
 
             outline: none;
             transition: .5s;
             &:hover {
-                background: var(--button-hover-primary);
+                background: var(--button-hover-secondary);
             }
         }
     }

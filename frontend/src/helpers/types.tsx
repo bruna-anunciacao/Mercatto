@@ -1,4 +1,4 @@
-export type DataType = {
+export type RegisterStepOne = {
   fullName: string;
   email: string;
   phone: string;
@@ -7,3 +7,13 @@ export type DataType = {
   password: string;
   confirmPassword: string;
 };
+
+export type RegisterStepTwo = {
+    zipcode: string;
+    city: string;
+    state: string;
+    neighborhood: string;
+    thoroughfare: string;
+    addressNumber: string;
+    additionalDetails: string;
+}
