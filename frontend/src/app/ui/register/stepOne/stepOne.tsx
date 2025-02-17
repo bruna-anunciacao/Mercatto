@@ -6,7 +6,6 @@ import { ArrowForwardIos } from "@mui/icons-material";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { InputText } from "primereact/inputtext";
-import { InputMask } from "primereact/inputmask";
 import { Password } from "primereact/password";
 import { Button } from "@mui/material";
 import Link from "next/link";
@@ -105,15 +104,41 @@ export default function StepOne({ step, setData, data }: StepOneProps) {
     );
   };
 
+  const handleCpf = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 11) value = value.slice(0, 11);
+
+    value = value
+      .replace(/^(\d{3})(\d)/, "$1.$2")
+      .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+      .replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, "$1.$2.$3-$4");
+
+    formik.setFieldValue("cpf", value);
+  };
+
+  const handlePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 11) value = value.slice(0, 11);
+
+    value = value
+      .replace(/^(\d{2})(\d)/, "($1) $2")
+      .replace(/^(\(\d{2}\) )(\d{5})(\d)/, "$1$2-$3");
+
+    formik.setFieldValue("phone", value);
+  };
+
   useEffect(() => {
     if (data && Object.keys(data).length > 0) {
       formik.setFieldValue("fullName", data.fullName);
       formik.setFieldValue("email", data.email);
-      formik.setFieldValue("phone", data.phone);
-      formik.setFieldValue(
-        "cpf",
-        data.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-      );
+      handlePhone({
+        target: { value: data.phone },
+      } as React.ChangeEvent<HTMLInputElement>);
+      handleCpf({
+        target: { value: data.cpf },
+      } as React.ChangeEvent<HTMLInputElement>);
       formik.setFieldValue("birthDate", data.birthDate);
       formik.setFieldValue("password", data.password);
       formik.setFieldValue("confirmPassword", data.confirmPassword);
@@ -163,13 +188,12 @@ export default function StepOne({ step, setData, data }: StepOneProps) {
         </label>
         <label>
           <span>Telefone</span>
-          <InputMask
+          <InputText
             id="inputPhone"
             name="phone"
             value={formik.values.phone}
-            onChange={formik.handleChange}
+            onChange={(e) => handlePhone(e)}
             onBlur={formik.handleBlur}
-            mask="(99) 99999-9999"
             className={
               formik.errors.phone && formik.touched.phone
                 ? "fieldError field"
@@ -184,13 +208,14 @@ export default function StepOne({ step, setData, data }: StepOneProps) {
       <div className={s.wrapperTwoFields}>
         <label>
           <span>CPF</span>
-          <InputMask
+          <InputText
             id="inputCpf"
             name="cpf"
             value={formik.values.cpf}
-            onChange={formik.handleChange}
+            onChange={(e) => {
+              handleCpf(e);
+            }}
             onBlur={formik.handleBlur}
-            mask="999.999.999-99"
             className={
               formik.errors.cpf && formik.touched.cpf
                 ? "fieldError field"

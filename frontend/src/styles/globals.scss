@@ -235,7 +235,6 @@ input[type="file"] {
 .error {
   @include regular-lb;
   color: var(--danger-500) !important;
-  position: absolute;
 }
 
 .fieldTextArea {
@@ -257,7 +256,7 @@ input[type="file"] {
   position: relative;
 
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
   border-radius: 0.5rem;
 

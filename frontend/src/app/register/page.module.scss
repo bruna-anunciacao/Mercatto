@@ -10,6 +10,8 @@
   align-items: center;
 
   background: var(--background-color);
+
+  overflow-y: auto;
   h1 {
     @include regular-h1;
     padding-bottom: 0.5rem;
@@ -22,8 +24,9 @@
   .wrapperRegisterForm {
     width: 50%;
     max-width: 800px;
-    height: 40rem;
+    min-height: 40rem;
     margin-top: 1.5rem;
+    padding: 1rem 0;
 
     display: flex;
     flex-direction: column;
