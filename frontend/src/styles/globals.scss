@@ -157,12 +157,13 @@ input[type="file"] {
 }
 
 /*Prime React Dropdown*/
-.p-dropdown-panel {
+.dropdownPanel {
+  @include regular-lb;
   padding: 15px;
   margin-top: -10px;
-  background-color: var(--secondary-900);
+  background-color: var(--background-color);
   border-top: 0px !important;
-  border: 1px solid var(--primary-500);
+  border: 1px solid var(--primary-color);
   border-radius: 0px 0px 0px 13px;
 }
 

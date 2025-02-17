@@ -9,7 +9,9 @@ import { RegisterStepTwo } from "@/helpers/types";
 import { InputText } from "primereact/inputtext";
 import { InputMask } from "primereact/inputmask";
 import { Button } from "@mui/material";
+import { Dropdown } from "primereact/dropdown";
 import Link from "next/link";
+import { StateEnums } from "@/helpers/enums";	
 // Styles
 import s from "./stepTwo.module.scss";
 
@@ -83,16 +85,20 @@ export default function StepTwo({ step, setData }: StepTwoProps) {
         </label>
         <label>
           <span>Estado</span>
-          <InputText
+          <Dropdown
             id="inputState"
             type="text"
             value={formik.values.state}
-            onChange={formik.handleChange}
+            onChange={(e) => formik.setFieldValue("state", e.value.option)}
             onBlur={formik.handleBlur}
+            optionLabel="option"
             name="state"
+            placeholder={formik.values.state}
+            options={StateEnums}
+            panelClassName="dropdownPanel"
             className={
               formik.errors.state && formik.touched.state
-                ? "fieldError field"
+                ? "fieldDropdownError field"
                 : "field"
             }
           />
